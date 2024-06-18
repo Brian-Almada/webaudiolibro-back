@@ -6,7 +6,8 @@ const bookSchema = new Schema(
         title: String,
         author: String,
         thumbnail: String,
-        description: String
+        description: String,
+        audio: String
     },
     {
         timestamps: true
