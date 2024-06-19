@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT
 const cors = require('cors');
-const Boock = require('./models/books');
+const Book = require('./models/books');
 
 app.use(cors());
 app.use(express.json());
@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 
 app.get('/books', async (req, res) => {
     try {
-        const books = await Boock.find();
+        const books = await Book.find();
         res.status(200).json({ok: true, data: books});
     } catch (error) {
         res.status(400).json({ok: false, error});
@@ -25,7 +25,7 @@ app.get('/books', async (req, res) => {
 app.post('/books', async (req, res) => {
     const { title, author } = req.body;
     try {
-        const result = await Boock.create({ title, author });
+        const result = await Book.create({ title, author });
         res.status(201).json({ok: true});
     } catch (error) {
         res.status(400).json({ok: false, error});
